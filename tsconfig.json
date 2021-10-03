@@ -2,7 +2,10 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "target": "esnext",
-    "lib": ["dom", "es2017"],
+    "lib": [
+      "dom",
+      "es2017"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -14,10 +17,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "rootDir": ".",
-    "baseUrl": "src",
-    "paths": {
-      "src/*": ["*"],
-    },
+    "baseUrl": ".",
     "sourceMap": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -31,8 +31,16 @@
     "noFallthroughCasesInSwitch": true
   },
   "resolve": {
-    "modules": ["."]
+    "modules": [
+      "."
+    ]
   },
-  "include": ["src", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

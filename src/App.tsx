@@ -1,7 +1,6 @@
 import React from 'react';
+import Constructor from 'src/components/Constructor';
 
-const App: React.FC = () => {
-  return <div>asdasd</div>;
-};
+const App: React.FC = () => <Constructor />;
 
 export default App;
