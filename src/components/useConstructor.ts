@@ -12,6 +12,7 @@ export enum Actions {
   REMOVE_COMPONENT = "REMOVE_COMPONENT",
   EDIT_COMPONENT = "EDIT_COMPONENT",
   COPY_COMPONENT = "COPY_COMPONENT",
+  REORDER_COMPONENTS = "REORDER_COMPONENTS",
 }
 
 export interface ConstructorStorage {
@@ -67,6 +68,12 @@ const reducer = (state: ConstructorStorage, action: ReducerActions) => {
       components: state.components.filter(
         (component) => component.uid !== action.payload.uid
       ),
+    };
+  }
+  if (action.type === Actions.REORDER_COMPONENTS) {
+    return {
+      ...state,
+      components: [...action.payload]
     };
   }
 

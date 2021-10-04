@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useMemo } from "react";
 import styled from "styled-components";
 import { ConstructorStorage } from "src/components/useConstructor";
 import { lib } from "src/components/lib/config";
 import { Id } from "src/components/types";
+import DragDropContainer from "src/components/components/DragDrop/DragDropContainer";
+import DraggableItem from "src/components/components/DragDrop/DraggableItem";
 
 const DashboardWrapper = styled.div`
   position: absolute;
@@ -56,32 +58,45 @@ interface DashboardProps {
 
 const Dashboard: React.FC<DashboardProps> = React.memo(
   ({ store, onEditComponent, isSortMode }) => {
+    const Container = useMemo(
+      () => (isSortMode ? DragDropContainer : React.Fragment),
+      [isSortMode]
+    );
+    const ItemWrapper = useMemo(
+      () => (isSortMode ? DraggableItem : React.Fragment),
+      [isSortMode]
+    );
+
     return (
       <DashboardWrapper>
         <DashboardContainer>
           <ScrollZone>
             <WorkComponentList isSortMode={isSortMode}>
-              {store.components.map((component) => {
-                const Component = lib[component.id].component;
-
-                return (
-                  <div
-                    key={component.uid}
-                    className="work-component-wrapper"
-                    onClick={
-                      !isSortMode
-                        ? onEditComponent.bind(
-                            null,
-                            component.uid,
-                            component.props.id
-                          )
-                        : undefined
-                    }
-                  >
-                    <Component {...component.props} />
-                  </div>
-                );
-              })}
+              <Container>
+                {store.components.map((component, index) => {
+                  const Component = lib[component.id].component;
+                  console.log('render list');
+                  return (
+                    <ItemWrapper key={component.uid} uid={component.uid} index={index}>
+                      <div
+                        key={component.uid}
+                        className="work-component-wrapper"
+                        onClick={
+                          !isSortMode
+                            ? onEditComponent.bind(
+                                null,
+                                component.uid,
+                                component.props.id
+                              )
+                            : undefined
+                        }
+                      >
+                        <Component {...component.props} />
+                      </div>
+                    </ItemWrapper>
+                  );
+                })}
+              </Container>
             </WorkComponentList>
           </ScrollZone>
         </DashboardContainer>
