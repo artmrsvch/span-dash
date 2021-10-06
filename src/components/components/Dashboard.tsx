@@ -75,7 +75,7 @@ const Dashboard: React.FC<DashboardProps> = React.memo(
               <Container>
                 {store.components.map((component, index) => {
                   const Component = lib[component.id].component;
-                  console.log('render list');
+
                   return (
                     <ItemWrapper key={component.uid} uid={component.uid} index={index}>
                       <div
