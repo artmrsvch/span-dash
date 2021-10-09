@@ -10,6 +10,7 @@ interface DraggableItemProps {
   uid: string;
   index: number;
 }
+
 const Div = styled.div`
   left: auto!important;
   top: auto!important;
@@ -25,6 +26,7 @@ const DraggableItem: React.FC<DraggableItemProps> = ({
     draggableStyle?: DraggingStyle | NotDraggingStyle
   ): CSSProperties => ({
     userSelect: "none",
+    padding: '0 8px 8px 8px',
     // background: isDragging ? "lightgreen" : "grey", //смена бэкраунда компонента который переносится
     ...draggableStyle, //пропсы реализации всей анимации драга
   });

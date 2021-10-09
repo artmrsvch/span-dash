@@ -39,6 +39,10 @@ const DropdownButton = styled(Dropdown.Button)`
   }
 `;
 
+const CompensationSpan = styled.span`
+  width: 42px;
+`
+
 const DrawerHeader: React.FC<DrawerHeaderProps> = ({
   children,
   onSave,
@@ -59,12 +63,12 @@ const DrawerHeader: React.FC<DrawerHeaderProps> = ({
   }
 
   return (
-    <Row align="middle" justify="space-between" style={{ width: "85%" }}>
+    <Row align="middle" justify="space-between" >
       <Button onClick={() => onSave()} type="link">
         {uid ? "Сохранить" : "Добавить"}
       </Button>
       {children}
-      {uid && <DropdownButton trigger={['click']} overlay={menu(handleMenuClick)} />}
+      {uid ? <DropdownButton trigger={['click']} overlay={menu(handleMenuClick)} /> : <CompensationSpan />}
       {contextHolder}
     </Row>
   );

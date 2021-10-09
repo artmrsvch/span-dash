@@ -6,10 +6,15 @@ export type Id = string | number
 
 export interface ComponentEditState {
   id: Id;
-  uid?: string
+  uid?: string;
   action: Actions;
 }
 export interface ClonedProps {
-  form: FormInstance
-  onFinish: (values?: any) => void
+  form: FormInstance;
+  onFinish: (values?: any) => void;
+}
+export enum Size {
+  SMALL = 'SMALL',
+  MEDIUM = 'MEDIUM',
+  LARGE = 'LARGE',
 }

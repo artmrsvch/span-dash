@@ -1,5 +1,6 @@
 import React, { useContext, useReducer } from "react";
 import { v4 } from "uuid";
+import { LOCAL_VAR_NAME } from "src/components/constants";
 
 interface StoreComponent {
   id: string | number;
@@ -28,12 +29,17 @@ interface ContextProps {
   dispatch: React.Dispatch<ReducerActions>;
 }
 
-const initialState: ConstructorStorage = {
-  components: [],
+const initialState = (): ConstructorStorage => {
+  const storage = localStorage.getItem(LOCAL_VAR_NAME);
+  if (storage) return JSON.parse(storage);
+
+  return {
+    components: [],
+  };
 };
 
 export const ConstructorContext = React.createContext<ContextProps>({
-  store: initialState,
+  store: initialState(),
   dispatch: () => ({}),
 });
 export const useConstructorContext = () => useContext(ConstructorContext);
@@ -73,7 +79,7 @@ const reducer = (state: ConstructorStorage, action: ReducerActions) => {
   if (action.type === Actions.REORDER_COMPONENTS) {
     return {
       ...state,
-      components: [...action.payload]
+      components: [...action.payload],
     };
   }
 
@@ -109,7 +115,7 @@ const reducer = (state: ConstructorStorage, action: ReducerActions) => {
 };
 
 export const useConstructor = () => {
-  const [store, dispatch] = useReducer(reducer, initialState);
+  const [store, dispatch] = useReducer(reducer, initialState());
 
   return { store, dispatch };
 };

@@ -27,8 +27,12 @@ const ConfirmDrawer: React.FC<
     title={title}
     footer={
       <Col>
-        <Button onClick={onCancel}>{cancelButtonText}</Button>
-        <Button onClick={onOk}>{okButtonText}</Button>
+        <Button onClick={onCancel} style={{ marginRight: "10px" }}>
+          {cancelButtonText}
+        </Button>
+        <Button onClick={onOk} danger>
+          {okButtonText}
+        </Button>
       </Col>
     }
   >

@@ -18,7 +18,7 @@ const BlockListItem: React.FC<BlockListItemProps> = ({
   id,
   Icon,
 }) => (
-  <Li>
+  <Li onClick={() => setComponent({ id, action: Actions.ADD_COMPONENT })}>
     <Container>
       <SvgWrapper>
         <Icon />
@@ -29,7 +29,6 @@ const BlockListItem: React.FC<BlockListItemProps> = ({
       <Button
         icon={<PlusOutlined />}
         type="link"
-        onClick={() => setComponent({ id, action: Actions.ADD_COMPONENT })}
       />
     </Container>
   </Li>

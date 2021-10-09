@@ -19,7 +19,7 @@ const DragDropContainer: React.FC = ({ children }) => {
       // если дроп был мимо не в дропзоне main
       return;
     }
-    console.log("onDragEnd", result);
+
     //переорганизовываем массив
     const payload = reorder(
       store.components,

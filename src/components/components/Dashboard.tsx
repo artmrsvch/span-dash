@@ -42,10 +42,12 @@ const ScrollZone = styled.div`
 
 const WorkComponentList = styled.div<{ isSortMode: boolean }>`
   .work-component-wrapper {
+    display: flex;
+    align-items: center;
     box-sizing: border-box;
     ${({ isSortMode }) =>
       isSortMode
-        ? "width: calc(100% - 16px); min-height: 40px; border-radius: 6px; background-color: rgb(230, 230, 230); margin: 8px; padding: 8px; cursor: grab;"
+        ? "width: 100%; min-height: 40px; border-radius: 6px; background-color: rgb(230, 230, 230); padding: 8px; cursor: grab;"
         : "width: calc(100% - 20px); margin: 10px;"}
   }
 `;
@@ -77,7 +79,11 @@ const Dashboard: React.FC<DashboardProps> = React.memo(
                   const Component = lib[component.id].component;
 
                   return (
-                    <ItemWrapper key={component.uid} uid={component.uid} index={index}>
+                    <ItemWrapper
+                      key={component.uid}
+                      uid={component.uid}
+                      index={index}
+                    >
                       <div
                         key={component.uid}
                         className="work-component-wrapper"

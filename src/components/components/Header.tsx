@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Button } from "antd";
 import classNames from "classnames";
+import { ConstructorStorage } from 'src/components/useConstructor';
+import { LOCAL_VAR_NAME } from 'src/components/constants';
 
 const HeaderContainer = styled.div`
   width: 100%;
@@ -49,16 +51,24 @@ const MoveContainer = styled.div`
 
 interface HeaderProps {
   isSortMode: boolean;
+  store: ConstructorStorage
 }
 
-const Header: React.FC<HeaderProps> = ({ isSortMode }) => {
+const Header: React.FC<HeaderProps> = ({ isSortMode, store }) => {
+  const onSave = () => {
+    const stringify = JSON.stringify(store)
+
+    localStorage.setItem(LOCAL_VAR_NAME, stringify)
+  };
   return (
     <HeaderContainer>
       <MoveContainer
         className={classNames({ "header-sorted-mode": isSortMode })}
       >
         <HeaderContent>
-          <Button type="primary">Сохранить</Button>
+          <Button type="primary" onClick={onSave}>
+            Сохранить
+          </Button>
         </HeaderContent>
         <HeaderContent
           className={classNames({ "header-sorted-mode__text": isSortMode })}

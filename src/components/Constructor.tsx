@@ -47,7 +47,7 @@ const Constructor: React.FC = () => {
     <ConstructorContext.Provider value={{ store, dispatch }}>
       <FlexContainer>
         <ConstructorContainer className="constructor-container">
-          <Header isSortMode={isSortMode} />
+          <Header isSortMode={isSortMode} store={store} />
           <Dashboard
             store={store}
             onEditComponent={onEditComponent}

@@ -1,10 +1,19 @@
-import { LayoutOutlined, FieldStringOutlined, FontSizeOutlined } from '@ant-design/icons';
+import {
+  LayoutOutlined,
+  FieldStringOutlined,
+  FontSizeOutlined,
+  LinkOutlined, EllipsisOutlined,
+} from '@ant-design/icons';
 import Title from "src/components/lib/title/Title";
 import TitleTemplate from "src/components/lib/title/TitleTemplate";
 import Profile from "src/components/lib/profile/Profile";
 import ProfileTemplate from "src/components/lib/profile/ProfileTemplate";
 import TextComponent from "src/components/lib/text/TextComponent";
 import TextTemplate from "src/components/lib/text/TextTemplate";
+import LinkComponent from "src/components/lib/link/LinkComponent";
+import LinkTemplate from "src/components/lib/link/LinkTemplate";
+import DividerComponent from 'src/components/lib/divider/DividerComponent';
+import DividerTemplate from 'src/components/lib/divider/DividerTemplate';
 
 /*
  * component = Компонент представления, который рендерится в дашборде
@@ -32,5 +41,19 @@ export const lib = {
     component: TextComponent,
     template: TextTemplate,
     icon: FontSizeOutlined,
+  },
+  "4": {
+    id: "4",
+    name: "Ссылка",
+    component: LinkComponent,
+    template: LinkTemplate,
+    icon: LinkOutlined,
+  },
+  "5": {
+    id: "5",
+    name: "Разделитель",
+    component: DividerComponent,
+    template: DividerTemplate,
+    icon: EllipsisOutlined,
   },
 };

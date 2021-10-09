@@ -1,0 +1,1 @@
+export const LOCAL_VAR_NAME = 'te02'

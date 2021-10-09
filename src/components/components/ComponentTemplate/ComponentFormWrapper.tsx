@@ -21,6 +21,21 @@ const StyledDrawer = styled(Drawer)`
   .ant-drawer-body {
     padding: 0;
   }
+  .ant-drawer-content {
+    border-radius: 16px 16px 0 0;
+  }
+  .ant-drawer-header {
+    display: flex;
+    padding: 16px;
+    .ant-drawer-title {
+      flex: 1;
+    }
+    .ant-drawer-close {
+      position: static;
+      padding: 0;
+      margin-left: 10px;
+    }
+  }
 `;
 
 const ComponentFormWrapper: React.FC<ComponentFormWrapperProps> = ({
