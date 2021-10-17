@@ -18,7 +18,7 @@ const Constructor: React.FC = () => {
   const [isSortMode, setSortMode] = useState(false);
 
   const [isVisibleComponentsMenu, setIsVisibleComponentsMenu] = useState(false);
-  const [component, setComponent] = useState<ComponentEditState>();
+  const [component, setComponent] = useState<ComponentEditState>(); //выбранный компонент для редактирования
 
   const onCloseComponentEdit = () => setComponent(undefined);
   const onSaveComponent = (props: any) => {
